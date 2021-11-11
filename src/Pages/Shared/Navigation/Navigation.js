@@ -2,8 +2,12 @@ import React from 'react';
 import './Navigation.css'
 import logo from '../../../images/logo.png'
 import { NavLink } from 'react-router-dom';
+import Button from '@restart/ui/esm/Button';
+import useAuth from '../../../hooks/useAuth/useAuth';
+import { Box } from '@mui/system';
 
 const Navigation = () => {
+  const{user, logout}=useAuth()
     return (
         <nav className="navbar navbar-expand-lg navbar-light bg-light">
   <div className="container">
@@ -24,9 +28,16 @@ const Navigation = () => {
         </li>
       </ul>
       <div className="d-flex">
-          <NavLink to="/">
-          <button className="btn btn-outline-success" type="submit">Logout</button>
-          </NavLink>
+              {
+                user?.email ?
+                    <Box>
+                        <Button onClick={logout} color="inherit">Logout</Button>
+                    </Box>
+                    :
+                    <NavLink style={{ textDecoration: 'none', color: 'white' }} to="/login">
+                        <Button color="inherit">Login</Button>
+                    </NavLink>
+               }
       </div>
     </div>
   </div>
