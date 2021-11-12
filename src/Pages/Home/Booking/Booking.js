@@ -1,13 +1,20 @@
 
+import { Alert } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
+import { useLocation, useHistory } from 'react-router-dom';
 import { useParams } from "react-router";
+import useAuth from "../../../hooks/useAuth/useAuth";
 import Navigation from "../../Shared/Navigation/Navigation";
 
 const Booking = () => {
-
+    const{user}=useAuth();
     const { productId } = useParams();
     const [product, setProduct] = useState({});
+    // console.log(user);
+
+    const location = useLocation();
+    const history = useHistory();
   
     useEffect(() => {
       fetch(`http://localhost:5000/singleProduct/${productId}`)
@@ -15,7 +22,6 @@ const Booking = () => {
         .then((data) => setProduct(data));
     }, []);
   
-    console.log(product);
     const {
       register,
       handleSubmit,
@@ -28,13 +34,20 @@ const Booking = () => {
 
     const onSubmit = (data) => {
     
-        fetch("http://localhost:5000/booking", {
+        fetch("http://localhost:5000/confirmOrder", {
           method: "POST",
           headers: { "content-type": "application/json" },
           body: JSON.stringify(data),
         })
           .then((res) => res.json())
-          .then((result) => console.log(result));
+          .then((result) => {
+            if(result.insertedId){
+              console.log(result.insertedId)
+            const destination = location?.state?.from || '/';
+             history.replace(destination);
+            }
+            
+          });
       };
     return (
         <div>
@@ -56,10 +69,16 @@ const Booking = () => {
               <h1>booking Form</h1>
               <form onSubmit={handleSubmit(onSubmit)}>
                 <input
-                  {...register("name")}
-                  defaultValue={product?.name}
+                  {...register("user")}
+                  defaultValue={user?.displayName}
                   className="p-2 m-2 w-100"
                 />
+                <input
+                  {...register("email")}
+                  defaultValue={user?.email}
+                  className="p-2 m-2 w-100"
+                />
+                <br />
                 <input
                   {...register("name")}
                   defaultValue={product?.name}
@@ -73,12 +92,7 @@ const Booking = () => {
                   className="p-2 m-2 w-100"
                 />
                 <br />
-                <input
-                  {...register("comments")}
-                  placeholder="comments"
-                  className="p-2 m-2 w-100"
-                />
-                <br />
+                
   
                 <input
                   {...register("price", { required: true })}
@@ -88,16 +102,15 @@ const Booking = () => {
                 <br />
                 <input
                   {...register("image", { required: true })}
-                  defaultValue={product?.image}
+                  defaultValue={product?.img}
                   className="p-2 m-2 w-100"
                 />
                 <br />
-                <select {...register("model")} className="p-2 m-2 w-100">
-                  <option value={product?.model}>{product?.model}</option>
-                  <option value="premium">premium</option>
-                  <option value="classic">classic</option>
-                  <option value="business">business</option>
-                </select>
+                <textarea
+                  {...register("comments")}
+                  placeholder="comments"
+                  className="p-2 m-2 w-100"
+                />
                 <br />
   
                 {errors.exampleRequired && <span>This field is required</span>}

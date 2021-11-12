@@ -17,6 +17,7 @@ const Register = () => {
         newLoginData[field] = value;
         setLoginData(newLoginData);
     }
+    console.log(loginData.name);
     const handleLoginSubmit = e => {
         if (loginData.password !== loginData.password2) {
             alert('Your password did not match');

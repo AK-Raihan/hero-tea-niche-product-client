@@ -18,24 +18,38 @@ const Navigation = () => {
     <div className="collapse navbar-collapse" id="navbarSupportedContent">
       <ul className="navbar-nav mx-auto mb-2 mb-lg-0">
         <li className="nav-item">
-          <a className="nav-link active" aria-current="page" href="/">Home</a>
+          <NavLink  to="/home" className="nav-link">Home</NavLink>
         </li>
         <li className="nav-item">
-          <a className="nav-link" href="/">About</a>
+          <NavLink to="/about" className="nav-link">About</NavLink>
         </li>
         <li className="nav-item">
-          <a className="nav-link" href="/">Service</a>
+          <NavLink to="/shop" className="nav-link">Shop</NavLink>
         </li>
       </ul>
       <div className="d-flex">
+
+        
               {
                 user?.email ?
-                    <Box>
-                        <Button onClick={logout} color="inherit">Logout</Button>
-                    </Box>
+                    <div class="dropdown">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                          Dashboard
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                          <li>
+                          <NavLink to="/dashboard">
+                              <button className="w-75 border-0 btn-lg btn-outline-success mb-3">Dashboard</button>
+                          </NavLink>
+                          </li>
+                          <li>
+                          <button onClick={logout} className="text-success w-75 border-0 btn-lg btn-outline-danger" >Logout</button>
+                          </li>
+                        </ul>
+                    </div>
                     :
-                    <NavLink style={{ textDecoration: 'none', color: 'white' }} to="/login">
-                        <Button color="inherit">Login</Button>
+                    <NavLink to="/login">
+                        <button className="btn btn-lg btn-outline-info">Login</button>
                     </NavLink>
                }
       </div>
