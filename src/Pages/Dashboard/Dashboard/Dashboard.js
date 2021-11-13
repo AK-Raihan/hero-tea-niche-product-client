@@ -28,8 +28,11 @@ import {
   Route,
   Link,
   useParams,
-  useRouteMatch
+  useRouteMatch,
+  NavLink
 } from "react-router-dom";
+import useAuth from '../../../hooks/useAuth/useAuth';
+import AdminRoute from '../../Login/AdminRoute/AdminRoute';
 
 
 const drawerWidth = 240;
@@ -37,6 +40,8 @@ const drawerWidth = 240;
 function Dashboard(props) {
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
+
+  const{logout, admin}=useAuth()
 
   let { path, url } = useRouteMatch();
   const handleDrawerToggle = () => {
@@ -52,9 +57,14 @@ function Dashboard(props) {
         <li><Link to={`${url}`}> <Button color="inherit">Dashboard</Button> </Link></li>
         <li><Link to={`${url}/myOrder`}> <Button color="inherit">My Order</Button> </Link></li>
         <li><Link to={`${url}/review`}> <Button color="inherit">Review</Button> </Link></li>
-        <li><Link to={`${url}/makeAdmin`}> <Button color="inherit">Make Admin</Button> </Link></li>
-        <li><Link to={`${url}/ManageAllProducts`}> <Button color="inherit">Manage All Products</Button></Link></li>
-        <li><Link to={`${url}/addProduct`}> <Button color="inherit">Add Product</Button> </Link></li>
+        <li><button onClick={logout} className="text-success w-75 border-0 btn-lg btn-outline-danger" >Logout</button></li>
+        {
+          admin && <Box>
+          <li><Link to={`${url}/makeAdmin`}> <Button color="inherit">Make Admin</Button> </Link></li>
+          <li><Link to={`${url}/ManageAllProducts`}> <Button color="inherit">Manage All Products</Button></Link></li>
+          <li><Link to={`${url}/addProduct`}> <Button color="inherit">Add Product</Button> </Link></li>
+          </Box>
+        }
       </ul>
       
       
@@ -135,15 +145,15 @@ function Dashboard(props) {
         <Route path={`${path}/review`}>
           <Review></Review>
         </Route>
-        <Route path={`${path}/makeAdmin`}>
+        <AdminRoute path={`${path}/makeAdmin`}>
           <MakeAdmin></MakeAdmin>
-        </Route>
-        <Route path={`${path}/manageAllProducts`}>
+        </AdminRoute>
+        <AdminRoute path={`${path}/manageAllProducts`}>
           <ManageAllProducts></ManageAllProducts>
-        </Route>
-        <Route path={`${path}/addProduct`}>
+        </AdminRoute>
+        <AdminRoute path={`${path}/addProduct`}>
           <AddProduct></AddProduct>
-        </Route>
+        </AdminRoute>
       </Switch>
       </Box>
     </Box>

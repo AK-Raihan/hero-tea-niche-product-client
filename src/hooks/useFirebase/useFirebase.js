@@ -6,6 +6,7 @@ import { getAuth,
     signInWithEmailAndPassword,
     signInWithPopup,
     GoogleAuthProvider,
+    updateProfile,
     signOut
     } from "firebase/auth";
 
@@ -15,6 +16,7 @@ const useFirebase = () => {
     const[user, setUser]=useState({});
     const[authError, setAuthError]=useState('')
     const [isLoading, setIsLoading] = useState(true);
+    const [admin, setAdmin] = useState(false);
 
     const googleProvider = new GoogleAuthProvider();
     const auth = getAuth();
@@ -26,6 +28,14 @@ const useFirebase = () => {
                 setAuthError('');
                 const newUser = { email, displayName, password };
                 setUser(newUser);
+                // save user to the database
+                saveUser(email, displayName);
+                // send name to firebase
+                updateProfile(auth.currentUser, {
+                    displayName: displayName
+                  }).then(() => {
+                  }).catch((error) => {
+                  });
                 history.replace('/');
             })
             .catch((error) => {
@@ -78,6 +88,14 @@ const useFirebase = () => {
         return () => unsubscribed;
     }, [])
 
+    // check admin
+    useEffect(()=>{
+        fetch(`http://localhost:5000/users/${user.email}`)
+        .then(res=>res.json())
+        .then(data=>setAdmin(data.admin))
+    },[user.email])
+
+
     // logout
     const logout = () => {
         setIsLoading(true);
@@ -89,9 +107,23 @@ const useFirebase = () => {
             .finally(() => setIsLoading(false));
     }
 
+    const saveUser =(email, displayName)=>{
+        const user = {email, displayName};
+        fetch('http://localhost:5000/users',{
+            method: 'POST',
+            headers: {
+                'content-type' : 'application/json'
+            },
+            body:JSON.stringify(user)
+        })
+        .then()
+
+    }
+
 
     return {
         user,
+        admin,
         registerUser,
         loginUser,
         signInWithGoogle,

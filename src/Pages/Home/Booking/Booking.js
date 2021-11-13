@@ -46,7 +46,6 @@ const Booking = () => {
             const destination = location?.state?.from || '/';
              history.replace(destination);
             }
-            
           });
       };
     return (

@@ -18,8 +18,22 @@ const MyOrder = () => {
         fetch('http://localhost:5000/myOrder')
         .then(res=>res.json())
         .then(data=>setOrders(data));
-    },[])
-    console.log(orders);
+    },[]);
+
+
+    const handleDelete = (id) => {
+        fetch(`http://localhost:5000/delteOrder/${id}`, {
+          method: "DELETE",
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            if (data.deletedCount) {
+              alert('successfully deleted');
+            }
+          });
+        console.log(id);
+      };
+
     return (
         <div>
             <h2>Orders: {orders.length}</h2>
@@ -46,7 +60,7 @@ const MyOrder = () => {
                                 <TableCell align="right">{row.email}</TableCell>
                                 <TableCell align="right">{row.date}</TableCell>
                                 <TableCell align="right">{row.name}</TableCell>
-                                <button className="btn btn-outline-info">Remove</button>
+                                <button onClick={() => handleDelete(row?._id)} className="btn btn-outline-info">Remove</button>
                             </TableRow>
                         ))}
                     </TableBody>
