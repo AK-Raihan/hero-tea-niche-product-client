@@ -2,9 +2,8 @@ import React from 'react';
 import './Navigation.css'
 import logo from '../../../images/logo.png'
 import { NavLink } from 'react-router-dom';
-import Button from '@restart/ui/esm/Button';
 import useAuth from '../../../hooks/useAuth/useAuth';
-import { Box } from '@mui/system';
+
 
 const Navigation = () => {
   const{user, logout}=useAuth()
@@ -32,11 +31,11 @@ const Navigation = () => {
         
               {
                 user?.email ?
-                    <div class="dropdown">
-                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                    <div className="dropdown">
+                        <button className="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                           Dashboard
                         </button>
-                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                        <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                           <li>
                           <NavLink to="/dashboard">
                               <button className="w-75 border-0 btn-lg btn-outline-success mb-3">Dashboard</button>

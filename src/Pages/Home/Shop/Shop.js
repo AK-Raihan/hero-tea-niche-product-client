@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Product from '../Home/Product/Product';
 
+
 const Shop = () => {
     const [products, setProducts] = useState([])
 
@@ -13,13 +14,13 @@ const Shop = () => {
     return (
         <div className="container py-5">
             <h2>Our products here {products.length}</h2>
-            <div class="row g-4">
-                {
-                    products.map(product=><Product
-                        key={product._id}
-                        product={product} 
-                        ></Product>)
-                }
+            <div className="row g-4">
+            {
+                products.map(product=><Product
+                    key={product._id}
+                    product={product} 
+                    ></Product>)
+            }
             </div>
             <button className="btn btn-lg btn-outline-info">Shoe More</button>
         </div>

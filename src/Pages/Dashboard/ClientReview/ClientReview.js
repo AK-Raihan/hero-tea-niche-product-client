@@ -14,7 +14,7 @@ const ClientReview = () => {
         <div className="container">
             <h1> Our Happy clients </h1>
             <h2>There are:{reviews.length} client </h2>
-            <div class="row row-cols-1 row-cols-md-3 g-4">
+            <div className="row row-cols-1 row-cols-md-3 g-4">
     
                 {
                     reviews.map(review=><ReviewDisplay

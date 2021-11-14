@@ -20,7 +20,7 @@ import DashboardHome from './../DashboardHome/DashboardHome';
 import MyOrder from './../MyOrder/MyOrder';
 import Review from './../Review/Review';
 import MakeAdmin from './../MakeAdmin/MakeAdmin';
-import ManageAllProducts from './../ManageAllProducts/ManageAllProducts';
+import ManageAllProducts from '../ManageAllOrders/ManageAllOrders';
 import AddProduct from './../AddProduct/AddProduct';
 
 import {
@@ -33,6 +33,7 @@ import {
 } from "react-router-dom";
 import useAuth from '../../../hooks/useAuth/useAuth';
 import AdminRoute from '../../Login/AdminRoute/AdminRoute';
+import ManageProducts from '../ManageProducts/ManageProducts';
 
 
 const drawerWidth = 240;
@@ -61,7 +62,8 @@ function Dashboard(props) {
         {
           admin && <Box>
           <li><Link to={`${url}/makeAdmin`}> <Button color="inherit">Make Admin</Button> </Link></li>
-          <li><Link to={`${url}/ManageAllProducts`}> <Button color="inherit">Manage All Products</Button></Link></li>
+          <li><Link to={`${url}/manageProducts`}> <Button color="inherit">Manage Products</Button> </Link></li>
+          <li><Link to={`${url}/ManageAllOrders`}> <Button color="inherit">Manage All Orders</Button></Link></li>
           <li><Link to={`${url}/addProduct`}> <Button color="inherit">Add Product</Button> </Link></li>
           </Box>
         }
@@ -148,7 +150,10 @@ function Dashboard(props) {
         <AdminRoute path={`${path}/makeAdmin`}>
           <MakeAdmin></MakeAdmin>
         </AdminRoute>
-        <AdminRoute path={`${path}/manageAllProducts`}>
+        <AdminRoute path={`${path}/manageProducts`}>
+          <ManageProducts></ManageProducts>
+        </AdminRoute>
+        <AdminRoute path={`${path}/manageAllOrders`}>
           <ManageAllProducts></ManageAllProducts>
         </AdminRoute>
         <AdminRoute path={`${path}/addProduct`}>
