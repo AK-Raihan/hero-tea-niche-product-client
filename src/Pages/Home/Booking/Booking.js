@@ -16,6 +16,7 @@ const Booking = () => {
     const location = useLocation();
     const history = useHistory();
   
+    const email = sessionStorage.getItem("email");
     useEffect(() => {
       fetch(`http://localhost:5000/singleProduct/${productId}`)
         .then((res) => res.json())
@@ -33,6 +34,8 @@ const Booking = () => {
 
 
     const onSubmit = (data) => {
+      data.email = email;
+    data.status = "pending";
     
         fetch("http://localhost:5000/confirmOrder", {
           method: "POST",

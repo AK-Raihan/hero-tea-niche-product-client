@@ -6,7 +6,7 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
-import useAuth from '../../../hooks/useAuth/useAuth';
+import useAuth from '../../../hooks/useAuth/useAuth';;
 
 
 
@@ -45,6 +45,7 @@ const MyOrder = () => {
                             <TableCell align="right">Email</TableCell>
                             <TableCell align="right">Date</TableCell>
                             <TableCell align="right">Product</TableCell>
+                            <TableCell align="right">Status</TableCell>
                             <TableCell align="right">Action</TableCell>
                         </TableRow>
                     </TableHead>
@@ -60,6 +61,7 @@ const MyOrder = () => {
                                 <TableCell align="right">{row.email}</TableCell>
                                 <TableCell align="right">{row.date}</TableCell>
                                 <TableCell align="right">{row.name}</TableCell>
+                                <TableCell align="right">{row.status} </TableCell>
                                 <button onClick={() => handleDelete(row?._id)} className="btn btn-outline-info">Remove</button>
                             </TableRow>
                         ))}
