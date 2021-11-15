@@ -1,5 +1,4 @@
 
-import { Alert } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useLocation, useHistory } from 'react-router-dom';
@@ -10,31 +9,34 @@ import Navigation from "../../Shared/Navigation/Navigation";
 const Booking = () => {
     const{user}=useAuth();
     const { productId } = useParams();
-    const [product, setProduct] = useState({});
+    const [product, setProduct] = useState({ name: "", price: "", date:""});
     // console.log(user);
+    delete product._id;
 
     const location = useLocation();
     const history = useHistory();
   
-    const email = sessionStorage.getItem("email");
     useEffect(() => {
       fetch(`http://localhost:5000/singleProduct/${productId}`)
         .then((res) => res.json())
-        .then((data) => setProduct(data));
+        .then((result) =>{ 
+          setProduct(result)
+          reset(result)
+        });
     }, []);
   
     const {
       register,
       handleSubmit,
-      watch,
+      reset,
       formState: { errors },
-    } = useForm();
+    } = useForm({defaultValues: product});
 
 
 
 
     const onSubmit = (data) => {
-      data.email = email;
+      console.log(data);
     data.status = "pending";
     
         fetch("http://localhost:5000/confirmOrder", {
@@ -46,7 +48,7 @@ const Booking = () => {
           .then((result) => {
             if(result.insertedId){
               console.log(result.insertedId)
-            const destination = location?.state?.from || '/';
+            const destination = location?.state?.from || '/dashboard/myOrder';
              history.replace(destination);
             }
           });
@@ -54,21 +56,23 @@ const Booking = () => {
     return (
         <div>
           <Navigation></Navigation>
-        <h1>THis is Booking</h1>
+        <h1 className="my-4 text-success">Please order a quality tea</h1>
   
         <div className="container">
           <div className="row">
-            <div className="col-md-6">
+            <div className="col-md-6 ">
+              <div className="booking-order">
               <div className="details-img">
                 <img className="w-75" src={product?.img} alt="" />
               </div>
               <h2>{product?.name}</h2>
               <p className="text-start">{product?.description}</p>
               <h1> price: {product?.price} </h1>
+              </div>
 
             </div>
-            <div className="col-md-6">
-              <h1>booking Form</h1>
+            <div className="col-md-6 bg-info p-3">
+              <h4>Order submit form</h4>
               <form onSubmit={handleSubmit(onSubmit)}>
                 <input
                   {...register("user")}
@@ -97,13 +101,13 @@ const Booking = () => {
                 
   
                 <input
-                  {...register("price", { required: true })}
+                  {...register("price" )}
                   defaultValue={product?.price}
                   className="p-2 m-2 w-100"
                 />
                 <br />
                 <input
-                  {...register("image", { required: true })}
+                  {...register("image")}
                   defaultValue={product?.img}
                   className="p-2 m-2 w-100"
                 />
@@ -120,7 +124,7 @@ const Booking = () => {
                 <input
                   type="submit"
                   value="Order Confirm"
-                  className="btn btn-info w-50"
+                  className="btn btn-success w-50"
                 />
               </form>
             </div>

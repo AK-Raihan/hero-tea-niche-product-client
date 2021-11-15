@@ -11,7 +11,7 @@ const Footer = () => {
         <div className="footer text-white py-5 mb-0 ">
         <div className="container">
         <div className="row">
-            <div className="col-lg-4 ">
+            <div className="col-lg-4 text-start">
                 <div>
                 <div>
                 <a className="navbar-brand d-flex justify-content-center align-items-center fs-3 fw-bold text-success" href="/"><img className="logo" src={logo} alt="" />Hero Tea </a>
@@ -30,7 +30,7 @@ const Footer = () => {
 
 
             </div>
-            <div className="col-lg-4 text-center ">
+            <div className="col-lg-4 text-start ">
                 <div>
                 <h5>Useful Link</h5>
                 <li> <Link> Home</Link></li>
@@ -45,7 +45,7 @@ const Footer = () => {
                 </div>
 
                 <h5>Social contact</h5>
-                <div className="social-menu d-flex list-unstyled justify-content-center">                  
+                <div className="social-menu d-flex list-unstyled ">                  
                     <li><i className="fab fa-facebook-square"></i></li>
                     <li><i className="fab fa-twitter-square"></i></li>
                     <li><i className="fab fa-instagram-square"></i></li>
@@ -53,7 +53,7 @@ const Footer = () => {
                 </div>
             </div>
 
-            <div className="col-lg-4">
+            <div className="col-lg-4 text-start">
                 <div>
                     <h5>Subscribe Newsletter</h5>
                     <p>Subscribe to our newsletter for new tourst place</p>

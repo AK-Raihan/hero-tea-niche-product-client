@@ -6,12 +6,6 @@ import CssBaseline from '@mui/material/CssBaseline';
 import Divider from '@mui/material/Divider';
 import Drawer from '@mui/material/Drawer';
 import IconButton from '@mui/material/IconButton';
-import InboxIcon from '@mui/icons-material/MoveToInbox';
-import List from '@mui/material/List';
-import ListItem from '@mui/material/ListItem';
-import ListItemIcon from '@mui/material/ListItemIcon';
-import ListItemText from '@mui/material/ListItemText';
-import MailIcon from '@mui/icons-material/Mail';
 import MenuIcon from '@mui/icons-material/Menu';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
@@ -27,13 +21,14 @@ import {
   Switch,
   Route,
   Link,
-  useParams,
+
   useRouteMatch,
-  NavLink
+
 } from "react-router-dom";
 import useAuth from '../../../hooks/useAuth/useAuth';
 import AdminRoute from '../../Login/AdminRoute/AdminRoute';
 import ManageProducts from '../ManageProducts/ManageProducts';
+import Pay from '../Pay/Pay';
 
 
 const drawerWidth = 240;
@@ -55,7 +50,9 @@ function Dashboard(props) {
       <Divider />
 
       <ul className="list-unstyled text-start">
+        <li><Link to="/"> <Button color="inherit">Home</Button> </Link></li>
         <li><Link to={`${url}`}> <Button color="inherit">Dashboard</Button> </Link></li>
+        <li><Link to={`${url}/pay`}> <Button color="inherit">Payment</Button> </Link></li>
         <li><Link to={`${url}/myOrder`}> <Button color="inherit">My Order</Button> </Link></li>
         <li><Link to={`${url}/review`}> <Button color="inherit">Review</Button> </Link></li>
         <li><button onClick={logout} className="text-success w-75 border-0 btn-lg btn-outline-danger" >Logout</button></li>
@@ -143,6 +140,9 @@ function Dashboard(props) {
         </Route>
         <Route path={`${path}/myOrder`}>
           <MyOrder></MyOrder>
+        </Route>
+        <Route path={`${path}/pay`}>
+          <Pay></Pay>
         </Route>
         <Route path={`${path}/review`}>
           <Review></Review>

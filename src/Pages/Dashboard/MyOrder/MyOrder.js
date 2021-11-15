@@ -6,7 +6,7 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
-import useAuth from '../../../hooks/useAuth/useAuth';
+import useAuth from './../../../hooks/useAuth/useAuth';
 
 
 
@@ -14,8 +14,10 @@ const MyOrder = () => {
     const[orders, setOrders]=useState([])
     const { user } = useAuth();
 
+    const email = user.email;
+
     useEffect(()=>{
-        fetch('http://localhost:5000/myOrder')
+        fetch(`http://localhost:5000/myOrder/${email}`)
         .then(res=>res.json())
         .then(data=>setOrders(data));
     },[]);

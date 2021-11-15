@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import Navigation from '../../Shared/Navigation/Navigation';
 import Product from '../Home/Product/Product';
 
 
@@ -12,9 +13,11 @@ const Shop = () => {
         .then(data=>setProducts(data))
     },[])
     return (
-        <div className="container py-5">
-            <h2>Our products here {products.length}</h2>
-            <div className="row g-4">
+        <div>
+            <Navigation></Navigation>
+            <div className="container py-5">
+            <h2>Our products here available</h2>
+            <div className="row g-4 mt-3">
             {
                 products.map(product=><Product
                     key={product._id}
@@ -22,7 +25,7 @@ const Shop = () => {
                     ></Product>)
             }
             </div>
-            <button className="btn btn-lg btn-outline-info">Shoe More</button>
+        </div>
         </div>
     );
 };

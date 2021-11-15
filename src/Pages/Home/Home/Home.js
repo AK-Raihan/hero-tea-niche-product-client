@@ -4,7 +4,6 @@ import Footer from '../../Shared/Footer/Footer';
 import Navigation from '../../Shared/Navigation/Navigation';
 import About from '../About/About';
 import Banner from '../Banner/Banner';
-import Shop from '../Shop/Shop';
 import Services from './Services/Services';
 
 const Home = () => {

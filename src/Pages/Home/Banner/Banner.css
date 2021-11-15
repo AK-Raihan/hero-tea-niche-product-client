@@ -11,7 +11,8 @@
  }
  .banner-content h3{
      font-size: 40px;
-     color: rgb(32, 51, 42);
+     color: rgb(20, 120, 192);
+     font-weight: 700;
  }
  .banner-content button {
      font-size: 20px;

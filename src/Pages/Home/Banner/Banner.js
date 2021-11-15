@@ -16,7 +16,7 @@ const Banner = () => {
           <div className="carousel-item active banner-carousel ">
             <img src={banner1} className="d-block w-100  " alt="..."/>
             <div className="carousel-caption d-none d-md-block banner-content">
-              <button className="btn btn-outline-info">Buy Now</button>
+              <button className="btn btn-outline-info fw-bold">Buy Now</button>
               <h1>Quality tea production from Bangladesh</h1>
               <h3>A cup of tea is an excuse to share great thoughts with great minds.</h3>
             </div>
@@ -24,7 +24,7 @@ const Banner = () => {
           <div className="carousel-item banner-carousel">
             <img src={banner2} className="d-block w-100" alt="..."/>
             <div className="carousel-caption d-none d-md-block banner-content">
-              <button className="btn btn-outline-info">Buy Now</button>
+              <button className="btn btn-outline-info fw-bold">Buy Now</button>
               <h1>Enjoy Break Time With Hero Tea</h1>
               <h3>There is something in the nature of tea that leads us into a world of quiet contemplation of life.</h3>
             </div>
@@ -32,7 +32,7 @@ const Banner = () => {
           <div className="carousel-item banner-carousel">
             <img src={banner3} className="d-block w-100" alt="..."/>
             <div className="carousel-caption d-none d-md-block banner-content">
-              <button className="btn btn-outline-info">Buy Now</button>
+              <button className="btn btn-outline-info fw-bold">Buy Now</button>
               <h1>Hero Tea is the best option for your feet body!</h1>
               <h3>The effect of tea is cooling and as a beverage it is most suitable. It is especially fitting for persons of self-restraint and inner worth</h3>
             </div>

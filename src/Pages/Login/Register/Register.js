@@ -3,6 +3,8 @@ import React, { useState } from 'react';
 import { Grid } from '@mui/material';
 import { NavLink, useHistory } from 'react-router-dom';
 import useAuth from '../../../hooks/useAuth/useAuth';
+import img from '../../../images/registration.jpg'
+import Navigation from '../../Shared/Navigation/Navigation';
 
 
 const Register = () => {
@@ -27,10 +29,12 @@ const Register = () => {
         e.preventDefault();
     }
     return (
-        <Container>
+        <div>
+            <Navigation></Navigation>
+            <Container>
             <Grid container spacing={2}>
                 <Grid item sx={{ mt: 8 }} xs={12} md={6}>
-                    <Typography variant="body1" gutterBottom>Register</Typography>
+                    <Typography variant="body1" gutterBottom>Register Please</Typography>
                     {!isLoading && <form onSubmit={handleLoginSubmit}>
                         <TextField
                             sx={{ width: '75%', m: 1 }}
@@ -76,10 +80,11 @@ const Register = () => {
                     {authError && <Alert severity="error">{authError}</Alert>}
                 </Grid>
                 <Grid item xs={12} md={6}>
-                    <h2>this is img place</h2>
+                    <img className="h-50" src={img} alt="" />
                 </Grid>
             </Grid>
         </Container>
+        </div>
     );
 };
 

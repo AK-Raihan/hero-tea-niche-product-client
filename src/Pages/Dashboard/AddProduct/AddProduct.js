@@ -2,7 +2,6 @@
 import { useForm } from "react-hook-form";
 import { useLocation, useHistory } from 'react-router-dom';
 
-import useAuth from "../../../hooks/useAuth/useAuth";
 import Navigation from "../../Shared/Navigation/Navigation";
 
 const AddProduct = () => {

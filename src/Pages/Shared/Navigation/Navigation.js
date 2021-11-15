@@ -31,7 +31,9 @@ const Navigation = () => {
         
               {
                 user?.email ?
-                    <div className="dropdown">
+                    <div className="dropdown d-flex justify-content-center align-items-center">
+                      <span>Hello <span className="fw-bold text-info">{user.displayName}</span> </span>
+                      <div className=""><img className="rounded-circle w-50" src={user.photoURL} alt="" /></div>
                         <button className="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                           Dashboard
                         </button>

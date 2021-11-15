@@ -4,6 +4,8 @@ import { Grid } from '@mui/material';
 import { NavLink, useLocation, useHistory } from 'react-router-dom';
 import useAuth from '../../../hooks/useAuth/useAuth';
 import Navigation from '../../Shared/Navigation/Navigation';
+import img from '../../../images/login.jpg'
+
 
 
 const Login = () => {
@@ -29,11 +31,13 @@ const Login = () => {
         signInWithGoogle(location, history)
     }
     return (
-        <Container>
+        <div>
             <Navigation></Navigation>
+            <Container>
+            
             <Grid container spacing={2}>
-                <Grid item sx={{ mt: 8 }} xs={12} md={6}>
-                    <Typography variant="body1" gutterBottom>Login</Typography>
+                <Grid item sx={{ mt: 10 }} xs={12} md={6}>
+                    <Typography variant="body1" gutterBottom>Login Please</Typography>
                     <form onSubmit={handleLoginSubmit}>
                         <TextField
                             sx={{ width: '75%', m: 1 }}
@@ -65,10 +69,11 @@ const Login = () => {
                     <Button onClick={handleGoogleSignIn} variant="contained">Google Sign In</Button>
                 </Grid>
                 <Grid item xs={12} md={6}>
-                    <h2>this is img place</h2>
+                    <img className="h-50" src={img} alt="" />
                 </Grid>
             </Grid>
         </Container>
+        </div>
     );
 };
 

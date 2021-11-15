@@ -13,7 +13,7 @@ import AuthProvider from "./contexts/AuthProvider/AuthProvider";
 import PrivateRoute from "./Pages/Login/Login/PrivateRoute/PrivateRoute";
 import Dashboard from "./Pages/Dashboard/Dashboard/Dashboard";
 import Shop from "./Pages/Home/Shop/Shop";
-import Product from "./Pages/Home/Home/Product/Product";
+import About from "./Pages/Home/About/About";
 
 
 function App() {
@@ -31,6 +31,9 @@ function App() {
           </Route>
           <Route path="/shop">
             <Shop/>
+          </Route>
+          <Route path="/about">
+            <About/>
           </Route>
           <PrivateRoute path="/booking/:productId">
             <Booking />
