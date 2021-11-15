@@ -1,6 +1,6 @@
 # Getting Started with Create React App
 
-# This project was bootstrapped with [Create React App](https://hero-tea.web.app/).
+# This project was bootstrapped with [Hero Tea](https://hero-tea.web.app/).
 
 ## Available Main Feature
 
