@@ -12,7 +12,7 @@ const Review = () => {
 
     const { register, handleSubmit, formState: { errors } } = useForm();
     const onSubmit = data =>{
-        fetch("https://protected-cove-95409.herokuapp.com/review", {
+        fetch("https://thawing-beach-65606.herokuapp.com/review", {
             method: "POST",
             headers: { "content-type": "application/json" },
             body: JSON.stringify(data),

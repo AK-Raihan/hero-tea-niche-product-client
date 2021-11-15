@@ -7,7 +7,7 @@ const ClientReview = () => {
     const[reviews, setReviews] = useState([])
 
     useEffect(()=>{
-        fetch('https://protected-cove-95409.herokuapp.com/rating')
+        fetch('https://thawing-beach-65606.herokuapp.com/rating')
         .then(res=>res.json())
         .then(data=>setReviews(data));
     },[])

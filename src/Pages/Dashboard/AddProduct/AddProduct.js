@@ -18,7 +18,7 @@ const AddProduct = () => {
 
     const onSubmit = (data) => {
     
-        fetch("https://protected-cove-95409.herokuapp.com/addProduct", {
+        fetch("https://thawing-beach-65606.herokuapp.com/addProduct", {
           method: "POST",
           headers: { "content-type": "application/json" },
           body: JSON.stringify(data),

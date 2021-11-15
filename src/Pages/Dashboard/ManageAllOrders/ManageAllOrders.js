@@ -18,14 +18,14 @@ const ManageAllOrders = () => {
     }
 
     useEffect(()=>{
-        fetch('https://protected-cove-95409.herokuapp.com/myOrder')
+        fetch('https://thawing-beach-65606.herokuapp.com/myOrder')
         .then(res=>res.json())
         .then(data=>setAllOrders(data));
     },[]);
 
 
     const handleDelete = (id) => {
-        fetch(`https://protected-cove-95409.herokuapp.com/delteOrder/${id}`, {
+        fetch(`https://thawing-beach-65606.herokuapp.com/delteOrder/${id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())
@@ -38,7 +38,7 @@ const ManageAllOrders = () => {
       };
 
       const handleUpdate= (id)=>{
-          fetch(`https://protected-cove-95409.herokuapp.com/updateStatus/${id}`, {
+          fetch(`https://thawing-beach-65606.herokuapp.com/updateStatus/${id}`, {
               method: "PUT",
               headers: {"content-type" : "application/json"},
               body: JSON.stringify({status}),

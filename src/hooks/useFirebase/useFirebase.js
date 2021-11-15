@@ -90,7 +90,7 @@ const useFirebase = () => {
 
     // check admin
     useEffect(()=>{
-        fetch(`https://protected-cove-95409.herokuapp.com/users/${user.email}`)
+        fetch(`https://thawing-beach-65606.herokuapp.com/users/${user.email}`)
         .then(res=>res.json())
         .then(data=>setAdmin(data.admin))
     },[user.email])
@@ -109,7 +109,7 @@ const useFirebase = () => {
 
     const saveUser =(email, displayName)=>{
         const user = {email, displayName};
-        fetch('https://protected-cove-95409.herokuapp.com/users',{
+        fetch('https://thawing-beach-65606.herokuapp.com/users',{
             method: 'POST',
             headers: {
                 'content-type' : 'application/json'

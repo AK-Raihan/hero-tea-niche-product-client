@@ -17,7 +17,7 @@ const Booking = () => {
     const history = useHistory();
   
     useEffect(() => {
-      fetch(`https://protected-cove-95409.herokuapp.com/singleProduct/${productId}`)
+      fetch(`https://thawing-beach-65606.herokuapp.com/singleProduct/${productId}`)
         .then((res) => res.json())
         .then((result) =>{ 
           setProduct(result)
@@ -39,7 +39,7 @@ const Booking = () => {
       console.log(data);
     data.status = "pending";
     
-        fetch("https://protected-cove-95409.herokuapp.com/confirmOrder", {
+        fetch("https://thawing-beach-65606.herokuapp.com/confirmOrder", {
           method: "POST",
           headers: { "content-type": "application/json" },
           body: JSON.stringify(data),
