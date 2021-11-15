@@ -17,7 +17,7 @@ const Booking = () => {
     const history = useHistory();
   
     useEffect(() => {
-      fetch(`http://localhost:5000/singleProduct/${productId}`)
+      fetch(`https://protected-cove-95409.herokuapp.com/singleProduct/${productId}`)
         .then((res) => res.json())
         .then((result) =>{ 
           setProduct(result)
@@ -39,7 +39,7 @@ const Booking = () => {
       console.log(data);
     data.status = "pending";
     
-        fetch("http://localhost:5000/confirmOrder", {
+        fetch("https://protected-cove-95409.herokuapp.com/confirmOrder", {
           method: "POST",
           headers: { "content-type": "application/json" },
           body: JSON.stringify(data),

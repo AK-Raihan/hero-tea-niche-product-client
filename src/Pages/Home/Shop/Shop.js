@@ -8,7 +8,7 @@ const Shop = () => {
 
 
     useEffect(()=>{
-        fetch('http://localhost:5000/shop')
+        fetch('https://protected-cove-95409.herokuapp.com/shop')
         .then(res=>res.json())
         .then(data=>setProducts(data))
     },[])

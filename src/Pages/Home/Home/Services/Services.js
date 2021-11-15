@@ -8,7 +8,7 @@ const Services = () => {
 
 
     useEffect(()=>{
-        fetch('http://protected-cove-95409.herokuapp.com/shop')
+        fetch('https://protected-cove-95409.herokuapp.com/shop')
         .then(res=>res.json())
         .then(data=>setServices(data))
     },[])

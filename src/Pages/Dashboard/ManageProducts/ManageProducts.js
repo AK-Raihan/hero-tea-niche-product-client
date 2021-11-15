@@ -6,13 +6,13 @@ const ManageProducts = () => {
 
 
     useEffect(()=>{
-        fetch('http://localhost:5000/shop')
+        fetch('https://protected-cove-95409.herokuapp.com/shop')
         .then(res=>res.json())
         .then(data=>setProducts(data))
     },[])
 
     const handleDelete = (id)=>{
-        fetch(`http://localhost:5000/deleteProduct/${id}`, {
+        fetch(`https://protected-cove-95409.herokuapp.com/deleteProduct/${id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())
